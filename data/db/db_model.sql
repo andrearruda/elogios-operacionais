@@ -8,19 +8,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema nossatvcorporativa.com.br-elogios_operacionais
+-- Table `role`
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema nossatvcorporativa.com.br-elogios_operacionais
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais` DEFAULT CHARACTER SET utf8 ;
-USE `nossatvcorporativa.com.br-elogios_operacionais` ;
-
--- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`role`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`role` (
+CREATE TABLE IF NOT EXISTS `role` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `parent_id` INT(11) NULL DEFAULT NULL,
   `roleId` VARCHAR(255) CHARACTER SET 'utf8' NULL DEFAULT NULL,
@@ -29,15 +19,15 @@ CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`rol
   INDEX `IDX_57698A6A727ACA70` (`parent_id` ASC),
   CONSTRAINT `FK_57698A6A727ACA70`
     FOREIGN KEY (`parent_id`)
-    REFERENCES `nossatvcorporativa.com.br-elogios_operacionais`.`role` (`id`))
+    REFERENCES `role` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`unit`
+-- Table `unit`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`unit` (
+CREATE TABLE IF NOT EXISTS `unit` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `initials` VARCHAR(45) NOT NULL,
@@ -46,9 +36,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`staff`
+-- Table `staff`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `unit_id` INT NOT NULL,
   `name` VARCHAR(25) NOT NULL,
@@ -61,16 +51,16 @@ CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`sta
   INDEX `fk_staff_unit1_idx` (`unit_id` ASC),
   CONSTRAINT `fk_staff_unit1`
     FOREIGN KEY (`unit_id`)
-    REFERENCES `nossatvcorporativa.com.br-elogios_operacionais`.`unit` (`id`)
+    REFERENCES `unit` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`message`
+-- Table `message`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`message` (
+CREATE TABLE IF NOT EXISTS `message` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `staff_id` INT NOT NULL,
   `name` VARCHAR(25) NOT NULL,
@@ -85,16 +75,16 @@ CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`mes
   INDEX `fk_message_staff1_idx` (`staff_id` ASC),
   CONSTRAINT `fk_message_staff1`
     FOREIGN KEY (`staff_id`)
-    REFERENCES `nossatvcorporativa.com.br-elogios_operacionais`.`staff` (`id`)
+    REFERENCES `staff` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`users`
+-- Table `users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `email` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
@@ -109,9 +99,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `nossatvcorporativa.com.br-elogios_operacionais`.`users_roles`
+-- Table `users_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`users_roles` (
+CREATE TABLE IF NOT EXISTS `users_roles` (
   `user_id` INT(11) NOT NULL,
   `role_id` INT(11) NOT NULL,
   PRIMARY KEY (`user_id`, `role_id`),
@@ -119,10 +109,10 @@ CREATE TABLE IF NOT EXISTS `nossatvcorporativa.com.br-elogios_operacionais`.`use
   INDEX `IDX_51498A8ED60322AC` (`role_id` ASC),
   CONSTRAINT `FK_51498A8ED60322AC`
     FOREIGN KEY (`role_id`)
-    REFERENCES `nossatvcorporativa.com.br-elogios_operacionais`.`role` (`id`),
+    REFERENCES `role` (`id`),
   CONSTRAINT `FK_51498A8EA76ED395`
     FOREIGN KEY (`user_id`)
-    REFERENCES `nossatvcorporativa.com.br-elogios_operacionais`.`users` (`id`))
+    REFERENCES `users` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
