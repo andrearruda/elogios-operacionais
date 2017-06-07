@@ -13,9 +13,6 @@ class ImageUploadController extends AbstractActionController
 
         $path = __DIR__ . '/../../../../../data/uploads/' . $type . '/' . $file;
 
-        var_dump($path);
-        die;
-
         $response = $this->getResponse();
         if(file_exists($path))
         {
