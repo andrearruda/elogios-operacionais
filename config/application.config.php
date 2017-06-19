@@ -13,7 +13,6 @@ return array(
         'TwbBundle',
         'ZfcBase', 'ZfcUser', 'ZfcUserDoctrineORM',
         'BjyAuthorize',
-        'SamUser',
         'Application',
     ),
 
