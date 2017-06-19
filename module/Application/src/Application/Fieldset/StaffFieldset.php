@@ -111,6 +111,7 @@ class StaffFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 25
             ),
         ));
 
@@ -127,6 +128,7 @@ class StaffFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 40
             ),
         ));
 
@@ -143,6 +145,7 @@ class StaffFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 255
             ),
         ));
     }

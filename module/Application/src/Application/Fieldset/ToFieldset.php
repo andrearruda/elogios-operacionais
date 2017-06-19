@@ -63,6 +63,7 @@ class ToFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 25
             ),
         ));
 
@@ -79,6 +80,7 @@ class ToFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 40
             ),
         ));
     }

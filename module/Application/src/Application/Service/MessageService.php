@@ -78,6 +78,7 @@ class MessageService
             'name' => $data['fieldset_to']['name'],
             'departament' => $data['fieldset_to']['departament'],
             'staff' => $staff->getId(),
+            'attendance_number' => $data['fieldset_message']['attendance_number'],
             'description' => $data['fieldset_message']['description'],
             'image' => $pathinfo['basename']
         );

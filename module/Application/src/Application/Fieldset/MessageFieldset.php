@@ -9,6 +9,22 @@ class MessageFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
+            'attendance_number' => array(
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim')
+                ),
+                'validators' => array(
+                    array('name' => 'NotEmpty'),
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'max' => 45
+                        ),
+                    ),
+                )
+            ),
             'description' => array(
                 'required' => true,
                 'filters' => array(
@@ -68,6 +84,23 @@ class MessageFieldset extends Fieldset implements InputFilterProviderInterface
         $this->setAttribute('enctype','multipart/form-data');
 
         $this->add(array(
+            'name' => 'attendance_number',
+            'type' => 'Zend\Form\Element\Text',
+            'options' => array(
+                'label' => 'N. da assistência',
+                'label_attributes' => array (
+                    'class' => 'control-label col-md-3',
+                ),
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-9',
+            ),
+            'attributes' => array(
+                'required' => true,
+                'maxlength' => 45
+            ),
+        ));
+
+        $this->add(array(
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
@@ -80,6 +113,7 @@ class MessageFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
+                'maxlength' => 140
             ),
         ));
 

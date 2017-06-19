@@ -190,6 +190,7 @@ class MessageController extends AbstractActionController
                     'departament' => $message->getDepartament(),
                 ),
                 'message' => array(
+                    'attendance_number' => $message->getAttendanceNumber(),
                     'description' => $message->getDescription(),
                     'image' => 'http://' . $this->getRequest()->getServer('HTTP_HOST') . '/upload/images/middle/' . $message->getImage()
                 )
@@ -215,6 +216,7 @@ class MessageController extends AbstractActionController
             $to->addChild('departament', $message['to']['departament']);
 
             $description = $item->addChild('message');
+            $description->addChild('attendance_number', $message['message']['attendance_number']);
             $description->addChild('description', $message['message']['description']);
             $description->addChild('image', $message['message']['image']);
         }

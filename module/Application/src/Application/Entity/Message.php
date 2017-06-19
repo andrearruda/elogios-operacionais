@@ -47,6 +47,13 @@ class Message
     /**
      * @var string
      *
+     * @ORM\Column(name="attendance_number", type="string", length=45, nullable=false)
+     */
+    private $attendanceNumber;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="string", length=45, nullable=false)
      */
     private $image;
@@ -173,6 +180,30 @@ class Message
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set attendanceNumber
+     *
+     * @param string $attendanceNumber
+     *
+     * @return Message
+     */
+    public function setAttendanceNumber($attendanceNumber)
+    {
+        $this->attendanceNumber = $attendanceNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get attendanceNumber
+     *
+     * @return string
+     */
+    public function getAttendanceNumber()
+    {
+        return $this->attendanceNumber;
     }
 
     /**

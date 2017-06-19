@@ -30,6 +30,7 @@ class IndexController extends AbstractActionController
                     'departament' => $this->getRequest()->getPost('fieldset_to')['departament']
                 ),
                 'fieldset_message' => array(
+                    'attendance_number' => $this->getRequest()->getPost('fieldset_message')['attendance_number'],
                     'description' => $this->getRequest()->getPost('fieldset_message')['description'],
                     'image' => $this->getRequest()->getFiles('fieldset_message')['image'],
                 )
