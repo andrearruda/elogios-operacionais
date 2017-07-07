@@ -51,6 +51,8 @@ class MessageController extends AbstractActionController
 
         $form = new MessageForm($this->getEntityManager());
         $service_message = new MessageService($this->getEntityManager());
+
+        /** @var \Application\Entity\Message $entity */
         $entity = $service_message->findById($id);
 
         $data_form = array(
@@ -65,6 +67,7 @@ class MessageController extends AbstractActionController
                 'departament' => $entity->getDepartament()
             ),
             'fieldset_message' => array(
+                'attendance_number' => $entity->getAttendanceNumber(),
                 'description' => $entity->getDescription(),
             )
         );
@@ -85,7 +88,12 @@ class MessageController extends AbstractActionController
                     'email' => $this->getRequest()->getPost('fieldset_staff')['email'],
                     'departament' => $this->getRequest()->getPost('fieldset_staff')['departament'],
                 ),
+                'fieldset_to' => array(
+                    'name' => $this->getRequest()->getPost('fieldset_to')['name'],
+                    'departament' => $this->getRequest()->getPost('fieldset_to')['departament'],
+                ),
                 'fieldset_message' => array(
+                    'attendance_number' => $entity->getAttendanceNumber(),
                     'description' => $this->getRequest()->getPost('fieldset_message')['description'],
                     'image' => $this->getRequest()->getFiles('fieldset_message')['image'],
                 )
