@@ -113,7 +113,8 @@ class MessageFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             'attributes' => array(
                 'required' => true,
-                'maxlength' => 140
+                'maxlength' => 140,
+                'rows' => 5
             ),
         ));
 
