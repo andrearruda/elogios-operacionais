@@ -51,6 +51,8 @@ class MessageController extends AbstractActionController
 
         $form = new MessageForm($this->getEntityManager());
         $service_message = new MessageService($this->getEntityManager());
+
+        /** @var \Application\Entity\Message $entity */
         $entity = $service_message->findById($id);
 
         $data_form = array(

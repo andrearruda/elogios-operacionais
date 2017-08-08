@@ -110,6 +110,10 @@ class MessageService
 
         /** @var \Application\Entity\Message $message */
         $message = $repository_message->findOneById($id);
+
+        $this->hydrator->hydrate($data_staff, $message);
+        $this->hydrator->hydrate($data_message, $message);
+
         $message->getStaff()->setName($data_staff['name']);
         $message->getStaff()->setEmail($data_staff['email']);
         $message->getStaff()->setDepartament($data_staff['departament']);
@@ -117,6 +121,8 @@ class MessageService
         $message->setName($data_message['name']);
         $message->setDepartament($data_message['departament']);
         $message->setDescription($data_message['description']);
+        $message->setAttendanceNumber($data['fieldset_message']['attendance_number']);
+
 
         $this->entity_manager->persist($message);
         $this->entity_manager->flush();
