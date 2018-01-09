@@ -26,8 +26,8 @@ return [
                 ['route' => 'zfcuser/login', 'roles' => ['guest']],
                 ['route' => 'zfcuser/register', 'roles' => ['guest']],
 
-                ['route' => 'home', 'roles' => ['guest', 'user']],
-                ['route' => 'home/thankyou', 'roles' => ['guest', 'user']],
+                ['route' => 'home', 'roles' => ['user']],
+                ['route' => 'home/thankyou', 'roles' => ['user']],
 
                 ['route' => 'message', 'roles' => ['user']],
                 ['route' => 'message/default', 'roles' => ['user']],
